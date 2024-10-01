@@ -1,0 +1,35 @@
+<div class="container mt-4" infiniteScroll (scrolled)="loadMoreProducts()">
+    <!-- Categorías -->
+    <div class="categories mb-4">
+      <h3>Categorías</h3>
+      <div class="btn-group">
+        <button *ngFor="let category of categories"
+                class="btn btn-outline-primary"
+                (click)="onCategorySelect(category)">
+          {{ category }}
+        </button>
+        <button class="btn btn-outline-secondary" (click)="loadProducts()">Mostrar Todos</button>
+      </div>
+    </div>
+  
+    <!-- Productos -->
+    <div class="row">
+        <div *ngFor="let product of products" >
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <div class="card h-100">
+                        <img [src]="product.image" class="card-img-top" alt="{{ product.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.title }}</h5>
+                            <p class="card-text">{{ product.description | slice:0:100 }}...</p>
+                            <p class="card-text"><strong>Precio:</strong> {{ product.price | currency }}</p>
+                        </div> 
+                    </div>
+                </div>
+                <div class="col-4"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
